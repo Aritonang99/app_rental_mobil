@@ -66,18 +66,17 @@ class Data_mobil extends CI_controller
         }
     }
     public function update_mobil($id) 
-    { 
-        $where = array('id_mobil'=> $id );
-        $data['mobil'] = $this->db->query("SELECT * FROM mobil mb,type tp WHERE mb.kode_type = tp.kode_type AND mb.id_mobil='$id'")->result();
-        $data['type'] = $this->rental_model->get_data('type')->result();
+	{ 
+		$where = array('id_mobil' => $id);
+		$data['mobil'] = $this->db->query("SELECT mb.*, tp.nama_type FROM mobil mb JOIN type tp ON mb.kode_type = tp.kode_type WHERE mb.id_mobil = ?", array($id))->row();
+    	$data['type'] = $this->rental_model->get_data('type')->result();
 
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
-        $this->load->view('admin/form_update_mobil', $data);
-        $this->load->view('templates_admin/footer');
-    
-    
-    }
+		$this->load->view('templates_admin/header');
+		$this->load->view('templates_admin/sidebar');
+		$this->load->view('admin/form_update_mobil', $data);
+		$this->load->view('templates_admin/footer');
+	}
+
 
 	public function update_mobil_aksi() {
 		$this->_rules();
