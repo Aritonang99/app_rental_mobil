@@ -4,6 +4,9 @@
                 <h1>Form Upadte Data Mobil</h1>
             </div>
             <div class="card">
+			<?php if ($this->session->flashdata('error')): ?>
+                    <?php echo $this->session->flashdata('error'); ?>
+                <?php endif; ?>
                 <div class="cart-body">
                     <?php foreach($mobil as $mb):?>
                     <form method ="POST" action="<?php echo base_url('admin/data_mobil/update_mobil_aksi')?>" enctype="multipart/form-data">
@@ -55,7 +58,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Gambar</label>
-                                <input type="file" name="gambar" class="form-control" >
+                                <input type="file" name="gambar" class="form-control"  value="asbfjasvfjhsdavfjavsdf">
+								<input type="hidden" name="gambar_lama" value="<?php echo $mb->gambar; ?>">
+                                
                             </div>
                             <button type="submit" class="btn btn-primary mt-4">Simpan</button>
                             <button type="reset" class="btn btn-danger mt-4">Reset</button>

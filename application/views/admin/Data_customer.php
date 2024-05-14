@@ -32,7 +32,7 @@
                 <td><?= $cs->password ?></td>
                 <td>
                     <div class="row">
-                    <a href="<?= base_url('admin/data_customer/detele_customer/').$cs->id_customer?>" class="btn btn-sm btn-danger mr-2"><i class="fas fa-trash"></i></a>
+                    <a href="<?= base_url('admin/data_customer/delete_customer/').$cs->id_customer?>" class="btn btn-sm btn-danger mr-2"><i class="fas fa-trash"></i></a>
                     <a href="<?= base_url('admin/data_customer/update_customer/').$cs->id_customer?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                     </div>
                 </td>
