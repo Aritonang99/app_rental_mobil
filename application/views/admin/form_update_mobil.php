@@ -4,7 +4,7 @@
             <h1>Form Update Data Mobil</h1>
         </div>
         <div class="card">
-           
+
             <div class="card-body">
                 <form method="POST" action="<?php echo base_url('admin/data_mobil/update_mobil_aksi') ?>" enctype="multipart/form-data">
                     <div class="row">

@@ -64,6 +64,7 @@ class Data_customer extends CI_controller
         {
             $this->_rules();
         if($this->form_validation->run() == FALSE){
+			// If validation fails, reload the update form
             $this->update_customer($this->input->post('id_customer'));
         } else {
             $id = $this->input->post('id_customer');   
@@ -74,6 +75,7 @@ class Data_customer extends CI_controller
             $no_telepon = $this->input->post('no_telepon');
             $no_ktp = $this->input->post('no_ktp');
             $password = md5($this->input->post('password'));
+
             $data =array(
                 'nama'=> $nama,
                 'username'=> $username,
@@ -81,13 +83,12 @@ class Data_customer extends CI_controller
                 'gender'=> $gender,
                 'no_telepon'=> $no_telepon,
                 'no_ktp'=> $no_ktp,
-                'password'=> $password
+                'password'=> $password,
         );
         $where = array(
             'id_customer' => $id
         );
         $this->rental_model->update_data('customer', $data ,$where);
-        $this->rental_model->insert_data($data,'customer');
         $this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
         Data Customer Berhasil di Update 
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
